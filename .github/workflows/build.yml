@@ -30,6 +30,10 @@ jobs:
         pip3 install --upgrade pip
         pip3 install west
 
+    - name: Install Python dependencies required by Zephyr
+      run: |
+        pip3 install pyelftools
+
     - name: Initialize west workspace
       run: |
         west init -l .
