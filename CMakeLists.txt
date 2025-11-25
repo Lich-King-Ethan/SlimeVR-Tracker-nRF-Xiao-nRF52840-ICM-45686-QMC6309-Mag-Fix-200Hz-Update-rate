@@ -27,6 +27,7 @@ target_include_directories(app PRIVATE src)
 target_include_directories(app PRIVATE Fusion/Fusion)
 #target_include_directories(app PRIVATE NXP-ISSDK-SensorFusion/sources)
 target_include_directories(app PRIVATE vqf-c/src)
+add_subdirectory(src/drivers/qmc6309)
 
 # Force recompile for updated build timestamp
 add_custom_target(touch_util_h ALL
