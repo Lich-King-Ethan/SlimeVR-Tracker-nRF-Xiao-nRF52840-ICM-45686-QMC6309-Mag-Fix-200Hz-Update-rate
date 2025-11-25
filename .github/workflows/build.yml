@@ -30,18 +30,16 @@ jobs:
         pip3 install --upgrade pip
         pip3 install west
 
-    - name: Initialize west workspace (use this repo as manifest root)
+    - name: Initialize west workspace
       run: |
         west init -l .
         west update
 
     - name: Build firmware for Seeed XIAO BLE nRF52840
-      env:
-        ZEPHYR_BASE: zephyr
       run: |
-        west build -b xiao_ble_nrf52840 -p always . -- -DSYSBUILD=OFF
+        west build --no-sysbuild -b xiao_ble_nrf52840 -p always .
 
-    - name: Upload UF2 artifact (if it exists)
+    - name: Upload UF2/HEX artifacts
       uses: actions/upload-artifact@v4
       with:
         name: SlimeVR_Xiao_nRF52840_firmware
