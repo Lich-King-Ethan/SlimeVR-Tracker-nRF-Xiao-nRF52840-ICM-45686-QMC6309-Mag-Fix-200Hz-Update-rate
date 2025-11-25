@@ -676,7 +676,7 @@ int sensor_init(void)
 	if (mag_available && mag_enabled)
 	{
 		// TODO: need to flag passthrough enabled
-//			sensor_imu->ext_passthrough(true); // reenable passthrough
+		sensor_imu->ext_passthrough(true); // reenable passthrough
 		err = sensor_mag->init(mag_initial_time, &mag_actual_time); // configure with ~200Hz ODR
 #if SENSOR_MAG_SPI_EXISTS
 		LOG_INF("Requested SPI frequency: %.2fMHz", (double)sensor_mag_spi_dev.config.frequency / 1000000.0);
