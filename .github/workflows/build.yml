@@ -39,7 +39,7 @@ jobs:
       env:
         ZEPHYR_BASE: zephyr
       run: |
-        west build -b xiao_ble_nrf52840 -p always .
+        west build -b xiao_ble_nrf52840 -p always . -- -DSYSBUILD=OFF
 
     - name: Upload UF2 artifact (if it exists)
       uses: actions/upload-artifact@v4
