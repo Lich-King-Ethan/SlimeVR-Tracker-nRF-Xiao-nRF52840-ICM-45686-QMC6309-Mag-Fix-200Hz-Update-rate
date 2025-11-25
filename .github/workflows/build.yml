@@ -1,4 +1,4 @@
-name: Build Xiao nRF52840 Firmware
+name: Build Xiao BLE Tracker Firmware
 
 on:
   push:
@@ -35,14 +35,14 @@ jobs:
         west init -l .
         west update
 
-    - name: Build firmware for Seeed XIAO BLE nRF52840
+    - name: Build firmware for Seeed XIAO BLE (nRF52840)
       run: |
-        west build --no-sysbuild -b xiao_ble_nrf52840 -p always .
+        west build --no-sysbuild -b xiao_ble -p always .
 
     - name: Upload UF2/HEX artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: SlimeVR_Xiao_nRF52840_firmware
+        name: SlimeVR_Xiao_BLE_firmware
         path: |
           build/zephyr/zephyr.uf2
           build/zephyr/zephyr.hex
