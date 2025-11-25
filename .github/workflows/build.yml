@@ -35,6 +35,15 @@ jobs:
         west init -l .
         west update
 
+    - name: Install Zephyr SDK
+      run: |
+        ZSDK_VERSION=0.17.4
+        wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${ZSDK_VERSION}/zephyr-sdk-${ZSDK_VERSION}_linux-x86_64.tar.xz
+        tar -xJf zephyr-sdk-${ZSDK_VERSION}_linux-x86_64.tar.xz
+        mv zephyr-sdk-${ZSDK_VERSION} $HOME/zephyr-sdk
+        echo "ZEPHYR_SDK_INSTALL_DIR=$HOME/zephyr-sdk" >> $GITHUB_ENV
+        echo "ZEPHYR_TOOLCHAIN_VARIANT=zephyr" >> $GITHUB_ENV
+
     - name: Build firmware for Seeed XIAO BLE (nRF52840)
       run: |
         west build --no-sysbuild -b xiao_ble -p always .
