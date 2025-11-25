@@ -34,7 +34,6 @@ jobs:
       run: |
         west init -l .
         west update
-        pip3 install -r zephyr/scripts/requirements-base.txt
 
     - name: Build firmware for Seeed XIAO BLE nRF52840
       env:
